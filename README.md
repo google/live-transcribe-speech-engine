@@ -3,8 +3,8 @@
 (This is not an official Google product!)
 
 [Live Transcribe](https://www.android.com/accessibility/live-transcribe/) is an
-Android application that provides real-time captioning for deaf and hard of
-hearing people. This repository contains the Android client libraries for
+Android application that provides real-time captioning for people who are deaf 
+or hard of hearing. This repository contains the Android client libraries for
 communicating with Google's Cloud Speech API that is used in Live Transcribe.
 
 The automatic speech recognition (ASR) module has the following features:
@@ -106,11 +106,12 @@ header/auxiliary data. On low-bandwidth connections, this is too high of a data
 rate to reliably use the cloud for recognition. It becomes necessary to use a
 codec. Of the codecs supported by the speech APIs, we experimented with FLAC,
 AMR-WB, and Opus (in an Ogg container). For the former two, we leverage the
-Android framework's encoder. FLAC is a lossless codec and perhaps will get you a
-factor of 2 in data compression. It introduces a few hundred seconds of latency,
-but is quite acceptable in most cases. AMR-WB offers a much more appealing
-compression ratio, but in relatively noisy conditions performs very badly for
-speech recognition. We do not recommend using AMR-WB under any circumstances.
+Android framework's encoder. FLAC is a lossless codec (unlike most audio codecs)
+and will get you roughly a factor of 2 in data compression. It introduces a few
+hundred seconds of latency, but is quite acceptable in most cases. AMR-WB offers
+a much more appealing compression ratio, but in relatively noisy conditions
+performs very badly for speech recognition. We do not recommend using AMR-WB for
+speech recognition under any circumstances.
 
 Finally, the Opus codec delivers quite impressive results for speech
 recognition. Unfortunately, the Android framework does not ship with an Opus
