@@ -5,7 +5,7 @@
 [Live Transcribe](https://www.android.com/accessibility/live-transcribe/) is an
 Android application that provides real-time captioning for people who are deaf 
 or hard of hearing. This repository contains the Android client libraries for
-communicating with Google's Cloud Speech API that is used in Live Transcribe.
+communicating with Google's Cloud Speech API that are used in Live Transcribe.
 
 The automatic speech recognition (ASR) module has the following features:
 
