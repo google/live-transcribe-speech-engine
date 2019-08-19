@@ -108,7 +108,7 @@ codec. Of the codecs supported by the speech APIs, we experimented with FLAC,
 AMR-WB, and Opus (in an Ogg container). For the former two, we leverage the
 Android framework's encoder. FLAC is a lossless codec (unlike most audio codecs)
 and will get you roughly a factor of 2 in data compression. It introduces a few
-hundred seconds of latency, but is quite acceptable in most cases. AMR-WB offers
+hundred milliseconds of latency, but is quite acceptable in most cases. AMR-WB offers
 a much more appealing compression ratio, but in relatively noisy conditions
 performs very badly for speech recognition. We do not recommend using AMR-WB for
 speech recognition under any circumstances.
