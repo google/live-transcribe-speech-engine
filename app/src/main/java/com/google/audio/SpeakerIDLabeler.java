@@ -32,7 +32,7 @@ public interface SpeakerIDLabeler extends SampleProcessorInterface {
    * end). The same request may be made several times for the same interval, so this function should
    * be very inexpensive.
    */
-  SpeakerIDInfo getSpeakerIDForTimeInterval(Instant start, Instant end);
+  SpeakerIdInfo getSpeakerIDForTimeInterval(Instant start, Instant end);
 
   /**
    * Clears the labels currently stored in the diarizer. It is useful to periodically clear the

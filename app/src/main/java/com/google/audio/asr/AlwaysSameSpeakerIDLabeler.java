@@ -15,15 +15,15 @@
  */
 package com.google.audio.asr;
 
-import com.google.audio.SpeakerIDInfo;
+import com.google.audio.SpeakerIdInfo;
 import com.google.audio.SpeakerIDLabeler;
 import org.joda.time.Instant;
 
 /** A diarizer that always reports the same speaker. */
 public class AlwaysSameSpeakerIDLabeler implements SpeakerIDLabeler {
-  private final SpeakerIDInfo fixedInfo;
+  private final SpeakerIdInfo fixedInfo;
 
-  public AlwaysSameSpeakerIDLabeler(SpeakerIDInfo fixedInfo) {
+  public AlwaysSameSpeakerIDLabeler(SpeakerIdInfo fixedInfo) {
     this.fixedInfo = fixedInfo;
   }
 
@@ -31,7 +31,7 @@ public class AlwaysSameSpeakerIDLabeler implements SpeakerIDLabeler {
   public void setReferenceTimestamp(Instant now) {}
 
   @Override
-  public SpeakerIDInfo getSpeakerIDForTimeInterval(Instant start, Instant end) {
+  public SpeakerIdInfo getSpeakerIDForTimeInterval(Instant start, Instant end) {
     return fixedInfo;
   }
 

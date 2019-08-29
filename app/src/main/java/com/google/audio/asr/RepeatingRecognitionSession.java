@@ -22,7 +22,7 @@ import android.text.Spanned;
 import com.google.audio.CircularByteBuffer;
 import com.google.audio.NetworkConnectionChecker;
 import com.google.audio.SampleProcessorInterface;
-import com.google.audio.SpeakerIDInfo;
+import com.google.audio.SpeakerIdInfo;
 import com.google.audio.SpeakerIDLabeler;
 import com.google.common.base.Optional;
 import com.google.common.flogger.FluentLogger;
@@ -631,11 +631,11 @@ public class RepeatingRecognitionSession implements SampleProcessorInterface {
   TranscriptionResult addSpeakerIDLabels(TranscriptionResult result) {
     // We don't know whether we'll be using word level detail or not downstream, so have the
     // diarizer process everything.
-    SpeakerIDInfo wholeUtteranceInfo =
+    SpeakerIdInfo wholeUtteranceInfo =
         diarizer.getSpeakerIDForTimeInterval(
             TimeUtil.toInstant(result.getStartTimestamp()),
             TimeUtil.toInstant(result.getEndTimestamp()));
-    List<SpeakerIDInfo> wordLevelInfo = new ArrayList<>(result.getWordLevelDetailCount());
+    List<SpeakerIdInfo> wordLevelInfo = new ArrayList<>(result.getWordLevelDetailCount());
     for (TranscriptionResult.Word word : result.getWordLevelDetailList()) {
       wordLevelInfo.add(
           diarizer.getSpeakerIDForTimeInterval(
@@ -671,7 +671,7 @@ public class RepeatingRecognitionSession implements SampleProcessorInterface {
     private NetworkConnectionChecker networkCheck;
     private SpeechDetectionPolicy speechDetector = new AlwaysSpeechPolicy();
     private SpeakerIDLabeler diarizer =
-        new AlwaysSameSpeakerIDLabeler(SpeakerIDInfo.newBuilder().setSpeakerId(0).build());
+        new AlwaysSameSpeakerIDLabeler(SpeakerIdInfo.newBuilder().setSpeakerId(0).build());
     private final ConcurrentLinkedQueue<TranscriptionResultPublisherReference> callbackRefs =
         new ConcurrentLinkedQueue<>();
     private TranscriptionErrorPublisher transcriptionErrorPublisher;
