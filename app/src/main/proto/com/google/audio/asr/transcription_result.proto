@@ -21,7 +21,7 @@ message TranscriptionResult {
   optional google.protobuf.Timestamp end_timestamp = 3;
 
   // The identity of the speaker.
-  optional audio.SpeakerIDInfo speaker_info = 5;
+  optional audio.SpeakerIdInfo speaker_info = 5;
 
   // Fine-grain information about each word.
   // NOTE: the TranscriptResultFormatter may colorize the coarse-grain
@@ -32,7 +32,7 @@ message TranscriptionResult {
     // Confidence for just this word [0, 1].
     optional float confidence = 2;
     // An integer tag for the identity of the active speaker.
-    optional audio.SpeakerIDInfo speaker_info = 3;
+    optional audio.SpeakerIdInfo speaker_info = 3;
     // The time at which the word was started.
     optional google.protobuf.Timestamp start_timestamp = 4;
     // The time at which the word was completed.
