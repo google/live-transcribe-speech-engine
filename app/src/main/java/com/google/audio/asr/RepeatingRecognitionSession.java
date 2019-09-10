@@ -256,7 +256,7 @@ public class RepeatingRecognitionSession implements SampleProcessorInterface {
     boolean networkRequirementsMet =
         !currentSession.requiresNetworkConnection() || isNetworkAvailable();
     if (!networkRequirementsMet) {
-      storeSamplesInLeftovers(samples, 0, samples.length, false);
+      storeSamplesInLeftovers(samples, offset, length, false);
       // Stop the session when network is lost.
       if (currentSession.isInitialized()) {
         logger.atInfo().log(
@@ -273,7 +273,7 @@ public class RepeatingRecognitionSession implements SampleProcessorInterface {
       // Buffer the speech so that when we reconnect, even a late speech detection will cause some
       // of the buffered audio to get to the server. If we drop samples we don't need to log because
       // we know it does not contain speech.
-      storeSamplesInLeftovers(samples, 0, samples.length, true);
+      storeSamplesInLeftovers(samples, offset, length, true);
       if (currentSession.isInitialized()) {
         logger.atInfo().log(
             "Session #%d ending due to lack of detected speech.", currentSession.sessionID());
@@ -295,10 +295,10 @@ public class RepeatingRecognitionSession implements SampleProcessorInterface {
     tryToProcessLeftovers();
 
     // If the session can take requests, send samples. Otherwise, put them into the leftover queue.
-    if (currentSession.processAudioBytes(samples, 0, samples.length)) {
+    if (currentSession.processAudioBytes(samples, offset, length)) {
       stopReconnectionTimer();
     } else {
-      storeSamplesInLeftovers(samples, 0, samples.length, false);
+      storeSamplesInLeftovers(samples, offset, length, false);
     }
 
     handlePostedActions();
