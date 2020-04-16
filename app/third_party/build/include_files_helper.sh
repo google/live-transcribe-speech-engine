@@ -1,8 +1,9 @@
+#!/bin/bash
 # To get the third party deps to build, we do some string replacement in the
 # headers. In principle, this should be done with include paths, but since
 # users of our tool probably have their own means of managing dependencies,
 # this is good enough for our purposes.
-curdir=$1
+curdir=$(dirname "$0")/
 echo "current dir is $curdir"
 if [ ! -d ${curdir}../../src/main/cpp/libogg ]; then
   mkdir ${curdir}../../src/main/cpp/libogg

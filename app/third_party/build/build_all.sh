@@ -28,9 +28,21 @@ do
   if [ ! -d ../out ]; then
     mkdir ../out
   fi
+  cp ../CMakeLists_libogg.txt ../CMakeLists.txt
   cd ../out
   cmake -DCMAKE_TOOLCHAIN_FILE="${NDK_PATH}"/build/cmake/android.toolchain.cmake -DANDROID_ABI=${android_abi[$i]} ..
   make
+  echo "Ogg for ${android_abi[$i]} build done."
+  cp ../CMakeLists_libopus.txt ../CMakeLists.txt
+  cd ../out
+  cmake -DCMAKE_TOOLCHAIN_FILE="${NDK_PATH}"/build/cmake/android.toolchain.cmake -DANDROID_ABI=${android_abi[$i]} ..
+  make
+  echo "Opus for ${android_abi[$i]} build done."
+  cp ../CMakeLists_opus-tools.txt ../CMakeLists.txt
+  cd ../out
+  cmake -DCMAKE_TOOLCHAIN_FILE="${NDK_PATH}"/build/cmake/android.toolchain.cmake -DANDROID_ABI=${android_abi[$i]} ..
+  make
+  echo "Opus-tools for ${android_abi[$i]} build done."
   cd ../build
   rm -rf ../out
 done
