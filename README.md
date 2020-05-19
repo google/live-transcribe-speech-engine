@@ -35,8 +35,12 @@ tested. However, the tests themselves are not open sourced at this time.
 Contact lt-speech-engine-maintainers@google.com with questions/issues.
 
 To try this library out using our sample Android application, follow the
-instructions below. These instructions assume that the host operating system is
-Linux.
+instructions below. These instructions assume that the host operating 
+system is an Ubuntu-like flavor of Linux. If other operating systems can be 
+supported with reasonable, additional efforts we may do so on a case-by-case 
+basis, however we unfortunately cannot claim that this library will be maintained 
+across all operating systems and build environments. Sorry for any inconvenience.
+
 
 We have also provided APKs so that you can try out the library without building
 any code.
