@@ -40,7 +40,7 @@ system is an Ubuntu-like flavor of Linux. If other operating systems can be
 supported with reasonable, additional efforts we may do so on a case-by-case 
 basis, however we unfortunately cannot claim that this library will be maintained 
 across all operating systems and build environments. Sorry for any inconvenience.
-
+See note below about testing this on other environments.
 
 We have also provided APKs so that you can try out the library without building
 any code.
@@ -144,3 +144,29 @@ CloudSpeechSessionParams.newBuilder()
             .setCodec(CodecAndBitrate.OGG_OPUS_BITRATE_32KBPS))
         .build()
 ```
+
+## Running on different environments
+We expect that our code will build easily on Ubuntu, but on other systems, you 
+might meet challenges building the c++ Opus library. Fortunately you can 
+learn a lot about this library without using Opus at all. Here are some 
+instructions for how to do so. They aren't extremely elegant, so please bear
+in mind that we provide this info with the goal of getting you unblocked on
+a system that we do not claim support for.
+
+If you change the line [here][https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/MainActivity.java#L180] to request uncompressed audio, you will no longer have a dependency on Opus. 
+```
+CloudSpeechSessionParams.newBuilder()
+        .setEncoderParams(CloudSpeechSessionParams.EncoderParams.newBuilder()
+            .setEnableEncoder(false)
+        .build()
+```
+
+Comment out the [the static import of the Opus lib][https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/StreamingAudioEncoder.java#L541]. 
+
+Your code no longer depends on Opus, but that doesn't mean the gradle files won't look for those deps.
+Go through the gradle files and comment out any references to the c++ libs. 
+
+For development and local testing, Opus vs. uncompressed audio doesn't matter 
+much. It's nearly enough to decide whether these libraries suit your needs, so you 
+can postpone figuring out Opus for when you decide whether to put your application
+into production.
