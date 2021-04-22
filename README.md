@@ -153,7 +153,7 @@ instructions for how to do so. They aren't extremely elegant, so please bear
 in mind that we provide this info with the goal of getting you unblocked on
 a system that we do not claim support for.
 
-If you change the line [here][https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/MainActivity.java#L180] to request uncompressed audio, you will no longer have a dependency on Opus. 
+If you change the line [here](https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/MainActivity.java#L180) to request uncompressed audio, you will no longer have a dependency on Opus. 
 ```
 CloudSpeechSessionParams.newBuilder()
         .setEncoderParams(CloudSpeechSessionParams.EncoderParams.newBuilder()
@@ -161,7 +161,7 @@ CloudSpeechSessionParams.newBuilder()
         .build()
 ```
 
-Comment out the [the static import of the Opus lib][https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/StreamingAudioEncoder.java#L541]. 
+Comment out the [the static import of the Opus lib](https://github.com/google/live-transcribe-speech-engine/blob/master/app/src/main/java/com/google/audio/StreamingAudioEncoder.java#L541). 
 
 Your code no longer depends on Opus, but that doesn't mean the gradle files won't look for those deps.
 Go through the gradle files and comment out any references to the c++ libs. 
