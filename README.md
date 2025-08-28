@@ -74,7 +74,7 @@ measures to avoid hitting the timeout. Namely, we use the following strategies:
 approaching (this is done using the is_final field from the returned speech
 results as they are an estimate of when a pause has happened).
 - Close sessions that have been silent for a very long time prior to hitting the
-timeout. If someone were to start talking, it is better that that be towards the
+timeout. If someone were to start talking, it is better that be towards the
 beginning of the session.
 - Store a buffer of audio in between sessions and send it once the new session
 starts. The device may jump from one network to another, or from network to
@@ -132,7 +132,7 @@ stream. For every block of audio that is pushed into the Ogg/Opus stream, we
 flush the Ogg stream rather than let the ogg library decide on its own when to
 push out the next block of data. This causes a slight increase in bitrate, but
 a significant reduction in latency. For the curious, deep in our encoder is a
-"low_latency_mode" flag. As a user of this library nothing need be done to
+"low_latency_mode" flag. As a user of this library nothing needs to be done to
 enable that. Just request the following settings for your
 CloudSpeechSessionParams:
 
